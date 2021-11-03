@@ -1,0 +1,215 @@
+/* mixins */
+@mixin sp {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+/* colors */
+
+$white: #fff;
+$cream: rgb(207, 209, 219);
+$highlight: #425B67;
+$ascent: #009688;
+$dark: #1E272C;
+
+$background: #263238;
+$foreground: #B0BEC5;
+
+$button: #2E3C43;
+
+/* reset and global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: $white;
+  text-decoration: none;
+}
+
+html,
+body {
+  font-size: 10px;
+  background-color: $background;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $background;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $background;
+  }
+}
+
+.sp-only {
+  display: none;
+  @include sp {
+    display: block;
+  }
+}
+
+/* text sizes */
+$texts: 12, 24, 30;
+
+.cutyoururl {
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include sp {
+    margin: 50px auto;
+  }
+
+  &-title {
+    font-size: 7.5rem;
+    color: $white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    @include sp {
+      font-size: 3.5rem;
+    }
+
+    span {
+      color: $ascent;
+      font-size: 7.5rem;
+      font-weight: bold;
+      font-family: 'Poppins', sans-serif;
+      @include sp {
+        font-size: 3.5rem;
+      }
+    }
+  }
+
+  &__input-container {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 150px 0;
+    @include sp{
+      width: 90%;
+      margin: 50px 0;
+    }
+  }
+
+  &__input-flex-container {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include sp {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+
+  &-input {
+    width: 600px;
+    height: 50px;
+    border: none;
+    background-color: $cream;
+    padding: 15px;
+    font-size: 2.4rem;
+    @include sp {
+      width: 100%;
+      font-size: 1.4rem;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &--result {
+      width: 805px;
+      margin-top: 15px;
+      text-align: center;
+      @include sp {
+        width: 100%;
+      }
+    }
+  }
+
+  &-button {
+    cursor: pointer;
+    height: 50px;
+    width: 200px;
+    border: 1px solid $highlight;
+    margin-left: 5px;
+    background-color: $highlight;
+    font-size: 1.8rem;
+    color: $white;
+    transition: all 300ms ease;
+    @include sp {
+      margin: 15px 0 0;
+      width: 100%;
+    }
+
+    &:hover {
+      background-color: $dark;
+      border-color: $dark;
+    }
+  }
+
+  &-text {
+    color: $white;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    @include sp {
+      font-size: 1.2rem;
+    }
+
+    @each $text in $texts {
+      &--#{$text} {
+        $rem: $text/10;
+        font-size: #{$rem}rem;
+        @include sp {
+          $rem: $text/14;
+          font-size: #{$rem}rem;
+        }
+      }
+    }
+
+    &--center{
+      text-align: center;
+    }
+
+    &--ascent {
+      color: $ascent;
+    }
+
+    &-container {
+      @include sp {
+        width: 90%;
+      }
+    }
+  }
+}
+
+footer {
+  margin-top: 150px;
+  @include sp {
+    margin-top: 50px;
+  }
+}
