@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import Footer from './components/Footer'
+import Content from './components/Content'
 
 function App() {
   const shortenUrl = (url:String) => {
@@ -31,25 +33,8 @@ function App() {
   return (
       <div className="cutyoururl">
         <h1 className="cutyoururl-title"> <span>Cut</span>yourURL </h1>
-        <div className="cutyoururl__input-container">
-          <div className="cutyoururl__input-flex-container">
-            <input className="cutyoururl-input" type="text" onChange={(e) => setUrl(e.target.value)}/>
-            <button className="cutyoururl-button" onClick={() => shortenUrl(url)}> Shorten </button>
-          </div>
-          <input className="cutyoururl-input cutyoururl-input--result" type="text" value={newUrl}/>
-        </div>
-        <div className="cutyoururl-text-container">
-          <p className="cutyoururl-text cutyoururl-text--24 cutyoururl-text--center">
-            <span className="cutyoururl-text--ascent"> cutyoururl </span> is an open-source tool used to shorten your URL
-            <br/>
-            and remove unnecessary characters on your link using gotiny.cc API
-          </p>
-        </div>
-        <footer>
-          <p className="cutyoururl-text">
-           Developed and Designed by <span className="cutyoururl-text--ascent"> Paolo Ligsay </span>
-          </p>
-        </footer>
+        <Content setUrl={setUrl} shortenUrl={shortenUrl} url={url} newUrl={newUrl}/>
+        <Footer />
       </div>
   )
 }
